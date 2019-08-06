@@ -24,6 +24,9 @@
                 font-family: "Trade Gothic";
                
             }
+            #hd{
+              position:fixed;
+            }
             ul{
               
                 text-decoration: none;
@@ -142,60 +145,47 @@ color:white;
      grid-template-columns: auto auto auto;
      background-color: black;
  }
- .grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto ;
-  grid-template-rows: repeat(3,120px);
-  grid-gap: 10px;
-  background-color: black;
-  padding: 10px;
+ .services{
+    padding-left:5%;
+    padding-top:30%;
+   
+    background-color:black;
 }
+ #grid{
+    display:grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap:1vw;
+    background-color:black;
+        }
+        #grid div{
+            font-size:2vw;
+            padding: .5em;
+            background-color:black;
+        height:70px;
+        color:white;
+        
+        width:80%;
 
-.grid-container > div {
-  background-color:rgb(41, 38, 38);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
-  color:blanchedalmond;
-  /**transition: color 0.25s ease;**/
-  margin-top:20px;
-  margin-left:10px;
-      
-position: relative;
+                      }
+                      #grid div:hover {
+                          background-color: #E9204F;
+                          left: 50px;
+                   
+                          transition: left 1s linear;
+
+                      }
+                      #grid div:hover .s5{
+                      
+                        text-align: center;
+
+                     
 }
-/**.grid-container > div:hover{
-    background-color:  #E9204F;
-    transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}**/
-
-.grid-container div {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.grid-container div:after {content: '\00bb';
- 
-}
-
-.grid-container div:hover {
-  padding-right: 25px;
-  background-color:  #E9204F;
-  
-  position: relative;
-  /**opacity: 0;
-  top: 0;**/
-  right: -40px;
-  transition: 0.5s;
-}
-
-.grid-container:hover div:after {
-  opacity: 1;
-  right: 0;
- 
+.fa-arrow-right{
+    float:right;
+    color:grey;
+    align-content: center;
+    margin-top:-70px;
 }
 .carousel-inner .carousel-item.active,
 .carousel-inner .carousel-item-next,
@@ -440,14 +430,34 @@ $('.carousel .carousel-item').each(function(){
         next.children(':first-child').clone().appendTo($(this));
       }
 });
+$('#recipeCarousel1').carousel({
+  interval: 10000
+})
+
+$('.carousel .carousel-item').each(function(){
+    var next = $(this).next();
+    if (!next.length) {
+    next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+    
+    for (var i=0;i<3;i++) {
+        next=next.next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        
+        next.children(':first-child').clone().appendTo($(this));
+      }
+});
         </script>
     </head>
     <body>
-    <header>
+    <header style="z-index:2;position: absolute">
       <div class="row">
-        <div class="col-md-5" >GENTIUM.</div>
+        <div class="col-md-5" id="hd" style="background-color:black">GENTIUM.</div>
         <div class="col-md-7">
-          <div class="topnav">
+          <div class="topnav" style="margin-left:40%">
                 <a class="active" href="#">Home</a>
                 <a  href="#">Services</a>
                 <a href="#">works</a>
@@ -487,45 +497,26 @@ $('.carousel .carousel-item').each(function(){
             <p>The generated Lorem ipsum is therefore always freee from repetition,injected humour</p></div>
     </div>
     
-   <div id="service" class="service"  >
-      
-     <br><br><br><h1 style="padding-block-start: 100px;" >Services
-       <h4 style="color: darkred;margin: 50px;">We Work With You,Not for You</h1></h4>
-   
-    <div class="grid-container">
-        <div>
-         <a href='#'></a> Digital Strategy</div>
-       <div>
-     <a href='#'></a><span> UX Design</span></div> 
-           
-        <div><a href='#'></a><span> Product Design</span></div>
-                   
-                           
-         <div> <a href='#'></a><span> Content strategy</span></div>
-                                      
-                                             
-        <div>
-                 <a href='#'></a><span>
-                                Design & Concept</span></div>
-        <div> <a href='#'></a><span>social Media
-                        </span></div>
-        <div> <a href='#'></a><span>
-                        Media Planning</span></div>
-        <div>
-                <a href='#'></a><span>
-                        Brand Identity</span></div>
-        <div>
-                <a href='#'></a><span>
-                        SEO Optimization</span></div>
-
-
-    </div>
+    <div id="services" class="services">
+      <hr width="3%" style="float:left;border: 1px solid #E9204F;">
+<h1 style="font-size:300%;color:white;">Services.<h4 style="color:#E9204F;margin-left:40px;margin-bottom:40px">WE WORK WITH YOU, NOT FOR YOU</h4></h1>
+<div id="grid">
+  <div><h5 class="s5" style="margin-top:10px;margin-left:10px">Digitale strategy</h5>	<i  style="margin-top:-50px;margin-left:10px"class="fa fa-arrow-right"></i></div>
+  <div><h5 class="s5" style="margin-top:10px;margin-left:10px">UX Design</h5><i  style="margin-top:-50px;margin-left:10px"class="fa fa-arrow-right"></i></div>
+  <div><h5 class="s5" style="margin-top:10px;margin-left:10px">Product Design</h5><i  style="margin-top:-50px;margin-left:10px"class="fa fa-arrow-right"></i></div>
+  <div><h5 class="s5" style="margin-top:10px;margin-left:10px">Content Strategy</h5><i  style="margin-top:-50px;margin-left:10px"class="fa fa-arrow-right"></i></div>
+  <div><h5 class="s5" style="margin-top:10px;margin-left:10px">Design & Concept</h5><i  style="margin-top:-50px;margin-left:10px"class="fa fa-arrow-right"></i></div>
+  <div><h5 class="s5" style="margin-top:10px;margin-left:10px">Social Media</h5><i  style="margin-top:-50px;margin-left:10px"class="fa fa-arrow-right"></i></div>
+  <div><h5 class="s5" style="margin-top:10px;margin-left:10px">Media Planing</h5><i  style="margin-top:-50px;margin-left:10px"class="fa fa-arrow-right"></i></div>
+  <div><h5 class="s5" style="margin-top:10px;margin-left:10px">Brand Identity</h5><i  style="margin-top:-50px;margin-left:10px"class="fa fa-arrow-right"></i></div>
+  <div><h5 class="s5" style="margin-top:10px;margin-left:10px">SEO Optimization</h5><i  style="margin-top:-50px;margin-left:10px"class="fa fa-arrow-right"></i></div>
+</div>
   </div>
-  <div class="vl"></div>
+  <div class="vl" style="margin-top:10px;"></div>
   <div class="row">
    <div class="col-md-9"> <h1>Works</h1></div> <div class="col-md-3" ><button class="btn btn-sm btn-custom-lg">View All</button></div></div>
-    <h4 style="color: darkred;margin: 50px;">Things We'hv made</h4>
-    <div class="container text-center my-3">
+    <h4 style="color: darkred;margin-left:40px;">Things We'hv made</h4>
+    <div      class="container text-center my-3" style="z-index:1;position: relative">
         
         <div class="row mx-auto my-auto">
             <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
@@ -572,7 +563,7 @@ $('.carousel .carousel-item').each(function(){
     
                   
                 <h1>About.</h1>
-                 <h4 style="color: darkred;margin: 50px;"> WE'RE MORE THAN A DIGITAL AGENCY</h4>
+                 <h4 style="color: darkred;margin-left:40px;"> WE'RE MORE THAN A DIGITAL AGENCY</h4>
           
               
               
@@ -621,14 +612,24 @@ $('.carousel .carousel-item').each(function(){
        <cite  style="color:#fff;" ><b> ARON SMITH, UX DESIGNER</b></cite>
     </div>
   </div>
-</div><p>
-<h1>Latest News</h1>
-    <h4 style="color: darkred;margin: 50px;">Check out some of our thinking</h4></p>
-    
+</div>
+
+<div class="row" style="margin-top:40px;margin-bottom:40px">
+  <div class="col-md-2" style="font-size: 38px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #fff;">N'Oreal</div>
+  <div class="col-md-2" style="font-size: 38px;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif; color: #fff;">norton</div>
+  <div class="col-md-2" style="font-size: 38px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #fff;">Vobes</div>
+  <div class="col-md-2" style="font-size: 34px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #fff;">FRIDAY.</div>
+  <div class="col-md-2" style="font-size: 30px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #fff;">PANTHEON</div>
+  <div class="col-md-2" style="font-size: 32px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #fff;">HORUS</div>
+</div>
+<div class="vl" style="margin-top:10px;"></div>
+  <div class="row">
+    <div class="col-md-9"> <h1 style="margin-left:40px;margin-top:100px;">Latest news</h1></div> <div class="col-md-3" ></div></div>
+     <h4 style="color: darkred;margin-left:40px;">Check out what we are thinking</h4>
 <div class="container text-center my-3">
                         
     <div class="row mx-auto my-auto">
-        <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+        <div id="recipeCarousel1" class="carousel slide w-100" data-ride="carousel">
             <div class="carousel-inner w-100" role="listbox">
                 <div class="carousel-item active">
                    <div class="image1" ><img class="d-block col-12 img-fluid" src="http://gentium.pixerex.com/html/demo/assets/images/posts/01.jpg" style="width:350px; height:250px">    <a class="info" href="#">Career<br>Winning tactics for a new digital agency</a></div>
@@ -644,14 +645,14 @@ $('.carousel .carousel-item').each(function(){
                 </div>
                 <div class="carousel-item">
                         <div class="image1" ><img class="d-block col-12 img-fluid" src="http://gentium.pixerex.com/html/demo/assets/images/posts/03.jpg" style="width:350px; height:250px"><a class="info" href="#">Design/Ux<br>How to make your product stand out</a></div>
-                        <div class="image2" ><img class="d-block col-12 img-fluid" src="http://gentium.pixerex.com/html/demo/assets/images/posts/04.jpg" style="width:350px; height:250px"> <a class="info" href="#">Marketing<br>choose your meeting speak,client feedback</a></div>
-                        <div class="image3" ><img class="d-block col-12 img-fluid" src="http://gentium.pixerex.com/html/demo/assets/images/posts/05.jpg" style="width:350px; height:250px"> <a class="info" href="#">Opinion<br>How i improve my digital in one day</a></div>
+                        <div class="image2" ><img class="d-block col-12 img-fluid" src="http://gentium.pixerex.com/html/demo/assets/images/posts/04.jpg" style="width:350px; height:250px"><a class="info" href="#">Marketing<br>choose your meeting speak,client feedback</a></div>
+                        <div class="image3" ><img class="d-block col-12 img-fluid" src="http://gentium.pixerex.com/html/demo/assets/images/posts/05.jpg" style="width:350px; height:250px"><a class="info" href="#">Opinion<br>How i improve my digital in one day</a></div>
 
                 </div>
                 <div class="carousel-item">
                         <div class="image1" ><img class="d-block col-12 img-fluid" src="http://gentium.pixerex.com/html/demo/assets/images/posts/04.jpg" style="width:350px; height:250px"><a class="info" href="#">Marketing<br>choose your meeting speak,client feedback</a></div>
                         <div class="image2" ><img class="d-block col-12 img-fluid" src="http://gentium.pixerex.com/html/demo/assets/images/posts/05.jpg" style="width:350px; height:250px"><a class="info" href="#">Opinion<br>How i improve my digital in one day</a></div>
-                        <div class="image3" ><img class="d-block col-12 img-fluid" src="http://gentium.pixerex.com/html/demo/assets/images/posts/01.jpg" style="width:350px; height:250px"> <a class="info" href="#">Career<br>Winning tactics for a new digital agency</a></div>
+                        <div class="image3" ><img class="d-block col-12 img-fluid" src="http://gentium.pixerex.com/html/demo/assets/images/posts/01.jpg" style="width:350px; height:250px"><a class="info" href="#">Career<br>Winning tactics for a new digital agency</a></div>
 
                 </div>
                 <div class="carousel-item">
@@ -676,15 +677,8 @@ $('.carousel .carousel-item').each(function(){
     
 </div>
 <hr>
-<div class="row">
-  <div class="col-md-2" style="font-size: 38px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #fff;">N'Oreal</div>
-  <div class="col-md-2" style="font-size: 38px;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif; color: #fff;">norton</div>
-  <div class="col-md-2" style="font-size: 38px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #fff;">Vobes</div>
-  <div class="col-md-2" style="font-size: 34px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #fff;">FRIDAY.</div>
-  <div class="col-md-2" style="font-size: 30px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #fff;">PANTHEON</div>
-  <div class="col-md-2" style="font-size: 32px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #fff;">HORUS</div>
-</div>
-<div class="footer">
+
+<div class="footer" style="height:100px; margin-left:-20px;margin-top:100px">
 <div class="row">
   <div class="col-md-4" >
       <a href="#" class="fa fa-facebook"></a></span>
